@@ -1,3 +1,5 @@
+var pie;
+
 function renderPie(year, target) {
   var dead  = 'dead' + year + '.txt';
   var mapping = year > 96 ? 'after97cause.txt' : 'before97cause.txt';
@@ -42,13 +44,15 @@ function renderPie(year, target) {
             data: data
           };
 
-          var pie = new d3pie(target, output);
+          pie = new d3pie(target, output);
         });
     });
 }
 
 function changeFile(e) {
-  renderPie(e.value, e.id);
+  pie.destroy();
+  var target = e.id.split('-')[0];
+  renderPie(e.value, target);
 }
 
 window.onload = function() {
