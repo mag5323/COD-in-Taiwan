@@ -38,6 +38,6 @@ d3.csv('data/dead102.txt')
           data: data
         };
 
-        var pie = new d3pie('pie', output);
+        var pie = new d3pie('pie1', output);
       });
   });
