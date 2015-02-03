@@ -53,4 +53,6 @@ window.onload = function() {
 
 function changeFile(e) {
   var year = e.value;
+  var dead  = 'dead' + year + '.txt';
+  var mapping = year > 96 ? 'after97cause.txt' : 'before97cause.txt';
 }
