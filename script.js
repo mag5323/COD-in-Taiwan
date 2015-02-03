@@ -58,4 +58,5 @@ window.onload = function() {
     options.push('<option value=' + years[key] + '>民國 ' + years[key] + ' 年</option>');
   }
   document.getElementById('pie1-select').innerHTML = options.join('');
+  renderPie(80, 'pie1');
 }
