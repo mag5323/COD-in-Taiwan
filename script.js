@@ -44,5 +44,10 @@ window.onload = function() {
     });
 
   var years = _.range(80, 103);
-  document.getElementById('pie1-select').innerHTML = '<option>民國 ' + years.join(' 年</option><option>民國 ') + ' 年</option>';
+  var options = [];
+  for (key in years) {
+    options.push('<option value=' + years[key] + '>民國 ' + years[key] + ' 年</option>');
+  }
+  document.getElementById('pie1-select').innerHTML = options.join('');
+}
 }
