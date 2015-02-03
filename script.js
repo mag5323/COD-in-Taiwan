@@ -1,3 +1,4 @@
+window.onload = function() {
 d3.csv('data/dead102.txt')
   .get(function(error, data) {
     var mailiao = _.filter(data, { 'county': '3913' });
@@ -41,3 +42,7 @@ d3.csv('data/dead102.txt')
         var pie = new d3pie('pie1', output);
       });
   });
+
+  var years = _.range(80, 103);
+  document.getElementById('pie1-select').innerHTML = '<option>民國 ' + years.join(' 年</option><option>民國 ') + ' 年</option>';
+}
