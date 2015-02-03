@@ -13,5 +13,30 @@ d3.csv('data/dead102.txt')
         for (key in cause) {
           data.content.push({label: mapping[key - 1].cause, value: cause[key].length});
         }
+
+        var output = {
+          header: {
+            title: {
+              text: '雲林縣麥寮鄉102年死因統計'
+            }
+          },
+          labels: {
+            inner: {
+              format: 'percentage'
+            }
+          },
+          tooltips: {
+            enabled: true,
+            type: 'placeholder',
+            string: '{value} 人'
+          },
+          size: {
+            'canvasHeight': 700,
+            'canvasWidth': 700
+          },
+          data: data
+        };
+
+        var pie = new d3pie('pie', output);
       });
   });
