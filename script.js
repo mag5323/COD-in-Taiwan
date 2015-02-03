@@ -1,4 +1,4 @@
-var pie;
+var pie = {pie1: 'pie1', pie2: 'pie2'}
 
 function renderPie(year, target) {
   var dead  = 'dead' + year + '.txt';
@@ -44,14 +44,14 @@ function renderPie(year, target) {
             data: data
           };
 
-          pie = new d3pie(target, output);
+          pie[target] = new d3pie(target, output);
         });
     });
 }
 
 function changeFile(e) {
-  pie.destroy();
   var target = e.id.split('-')[0];
+  pie[target].destroy();
   renderPie(e.value, target);
 }
 
@@ -63,4 +63,5 @@ window.onload = function() {
   }
   document.getElementById('pie1-select').innerHTML = options.join('');
   renderPie(80, 'pie1');
+  renderPie(102, 'pie2');
 }
