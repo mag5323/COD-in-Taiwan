@@ -7,6 +7,7 @@ d3.csv('data/dead102.txt')
       .get(function(error, data) {
         var mapping = data;
         var data = {
+          sortOrder: "value-asc",
           content: []
         };
 
@@ -32,7 +33,7 @@ d3.csv('data/dead102.txt')
           },
           size: {
             'canvasHeight': 700,
-            'canvasWidth': 700
+            'canvasWidth': 900
           },
           data: data
         };
