@@ -41,7 +41,7 @@ function renderPie(year, id, county, target) {
               string: '{value} 人'
             },
             size: {
-              'canvasHeight': 700,
+              'canvasHeight': 650,
               'canvasWidth': 800
             },
             data: data
