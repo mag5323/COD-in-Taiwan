@@ -1,4 +1,4 @@
-var pie = {pie1: 'pie1', pie2: 'pie2'}
+var pie = {pie1: 'pie1', pie2: 'pie2'};
 
 function renderPie(year, target) {
   var dead  = 'dead' + year + '.txt';
@@ -52,7 +52,31 @@ function renderPie(year, target) {
 function changeYear(e) {
   var target = e.id.split('-')[0];
   pie[target].destroy();
+  renderRegion(e.value, target);
   renderPie(e.value, target);
+}
+
+function renderRegion(year, target) {
+  var region = 'region';
+
+  if (year > 99) {
+    region += '100.txt';
+  } else if (year > 96 & year < 100) {
+    region += '97.txt';
+  } else if (year > 93 & year < 97) {
+    region += '93.txt';
+  } else if (year > 78 & year < 93) {
+    region += '79.txt';
+  }
+
+  d3.csv('data/' + region)
+    .get(function(error, data) {
+      var options = [];
+      for (key in data) {
+        options.push('<option value=' + data[key].id + '> ' + data[key].county + '</option>');
+      }
+      document.getElementById(target + '-region').innerHTML = options.join('');
+    });
 }
 
 window.onload = function() {
