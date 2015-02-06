@@ -42,7 +42,7 @@ function renderPie(year, id, county, target) {
             },
             size: {
               'canvasHeight': 700,
-              'canvasWidth': 900
+              'canvasWidth': 800
             },
             data: data
           };
