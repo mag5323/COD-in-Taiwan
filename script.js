@@ -1,12 +1,12 @@
 var pie = {pie1: 'pie1', pie2: 'pie2'};
 
-function renderPie(year, target) {
+function renderPie(year, id, county, target) {
   var dead  = 'dead' + year + '.txt';
   var mapping = year > 96 ? 'after97cause.txt' : 'before97cause.txt';
 
   d3.csv('data/' + dead)
     .get(function(error, data) {
-      var mailiao = _.filter(data, { 'county': '3913' });
+      var mailiao = _.filter(data, { 'county': id});
       var cause = _.groupBy(mailiao, 'cause');
 
       d3.csv('data/' + mapping)
@@ -24,7 +24,7 @@ function renderPie(year, target) {
           var output = {
             header: {
               title: {
-                text: '雲林縣麥寮鄉 ' + year + ' 年死因統計'
+                text: county + ' ' + year + ' 年死因統計'
               }
             },
             labels: {
@@ -51,9 +51,20 @@ function renderPie(year, target) {
 
 function changeYear(e) {
   var target = e.id.split('-')[0];
-  pie[target].destroy();
   renderRegion(e.value, target);
-  renderPie(e.value, target);
+}
+
+function changeRegion(e) {
+  var target = e.id.split('-')[0];
+  var year  = document.getElementById(target + '-select').value;
+  var countySelect = document.getElementById(target + '-region');
+  var id = countySelect.value;
+  var county = countySelect.options[countySelect.selectedIndex].text;
+
+  if (typeof pie[target] === 'object') {
+    pie[target].destroy();
+  }
+  renderPie(year, id, county, target);
 }
 
 function renderRegion(year, target) {
@@ -87,6 +98,4 @@ window.onload = function() {
   }
   document.getElementById('pie1-select').innerHTML = options.join('');
   document.getElementById('pie2-select').innerHTML = options.join('');
-  renderPie(80, 'pie1');
-  renderPie(102, 'pie2');
 }
