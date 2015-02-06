@@ -49,7 +49,7 @@ function renderPie(year, target) {
     });
 }
 
-function changeFile(e) {
+function changeYear(e) {
   var target = e.id.split('-')[0];
   pie[target].destroy();
   renderPie(e.value, target);
