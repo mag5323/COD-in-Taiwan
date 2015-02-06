@@ -21,6 +21,9 @@ function renderPie(year, id, county, target) {
             data.content.push({label: mapping[key - 1].cause, value: cause[key].length});
           }
 
+          var total = _.reduce(_.pluck(data.content, 'value'), function(memo, num){ return memo + num;});
+          document.getElementById(target + '-sum').innerText = '共 ' + total.toLocaleString() + ' 人';
+
           var output = {
             header: {
               title: {
