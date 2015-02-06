@@ -101,4 +101,6 @@ window.onload = function() {
   }
   document.getElementById('pie1-select').innerHTML = options.join('');
   document.getElementById('pie2-select').innerHTML = options.join('');
+  changeYear({id: 'pie1-select', value: 80});
+  changeYear({id: 'pie2-select', value: 80});
 }
